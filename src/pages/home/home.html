@@ -3,6 +3,7 @@
     <ion-title>Home</ion-title>
   </ion-navbar>
 </ion-header>
+<script src="cordova.js"></script>
 
 <ion-content padding>
   <h2>Welcome to Ionic!</h2>
@@ -14,4 +15,11 @@
     Take a look at the <code>src/pages/</code> directory to add or change tabs,
     update any existing page or create new pages.
   </p>
+  <button ion-button (click)='openFilters()'>Default</button>
+<button ion-button (click)="showProfilePage()">Go To About</button>
+<ion-content padding>
+ 
+  <button ion-button full (click)="openPicker()">Open Simple Picker</button>
+  <button ion-button full (click)="openRemotePicker()">Open Remote JSON Picker</button>
+ 
 </ion-content>
