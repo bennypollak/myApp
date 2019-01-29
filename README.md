@@ -10,6 +10,9 @@ ionic cordova plugin add cordova-wheel-selector-plugin
 npm install --save @ionic-native/wheel-selector
 ionic cordova build ios --prod
 
+
+https://stackoverflow.com/questions/40034887/how-do-i-navigate-push-to-a-page-in-ionic-2
+
 https://ionicacademy.com/wheel-picker-ionic/
 
 

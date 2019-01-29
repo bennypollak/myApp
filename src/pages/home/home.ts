@@ -5,12 +5,34 @@ import { ToastController } from 'ionic-angular/components/toast/toast-controller
 
 import { NavController } from 'ionic-angular';
 import {NewpagePage} from '../newpage/newpage';
+import {WhatsPage} from '../whats/whats';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
+export class HomePage {  year: any
+  placeholderDate: any
+  customOptions: any = {
+   min:"2019",  
+   max:"12-31-2019",  
+    buttons: [{
+      text: 'Clear',
+      handler: () => {
+        this.placeholderDate = null;
+      }
+    }]
+  } 
+  
+   clearDate() {
+    this.placeholderDate = null
+  }
+  clickMe() {
+    alert(this.placeholderDate)
+
+  }
+  
+  
   dummyJson = {
     days: [
       {description: 'Mon'},
@@ -27,10 +49,19 @@ export class HomePage {
       {description: 'Ben'}
     ]
   }
- constructor(public navCtrl: NavController, private selector: WheelSelector, private toastCtrl: ToastController, private http: HttpClient) { }
+ constructor(public navCtrl: NavController, private selector: WheelSelector, private toastCtrl: ToastController, private http: HttpClient) { 
  //constructor(public navCtrl: NavController) {  }
 
-
+  this.simpleColumns = [
+    {
+      name: 'what',
+      options: [
+        { text: 'MLB', value: 'MLB' },
+        { text: 'NBA', value: 'NBA' }
+      ]
+    }
+  ];
+ }
 openRemotePicker() {
   this.http.get('https://randomuser.me/api/?results=5').subscribe(res => {
     this.selector.show({
@@ -86,4 +117,11 @@ openRemotePicker() {
         this.navCtrl.push(NewpagePage);
             console.log('newpage');
     }
+    showWhatsPage() {
+        this.navCtrl.push(WhatsPage);
+            console.log('whats');
+    }
+
+
+
 }

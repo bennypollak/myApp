@@ -13,6 +13,8 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { NewpagePage } from '../pages/newpage/newpage';
+import { WhatsPage } from '../pages/whats/whats';
+import { MultiPickerModule } from 'ion-multi-picker';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -25,11 +27,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     TabsPage
 , NewpagePage
+, WhatsPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
-    HttpClientModule
+    IonicModule.forRoot(MyApp)
+    , HttpClientModule
+    , MultiPickerModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -37,8 +41,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage,
-    NewpagePage
+    TabsPage
+    , NewpagePage
+    , WhatsPage
   ],
   providers: [
     StatusBar,
