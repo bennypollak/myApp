@@ -1,43 +1,55 @@
 <ion-header>
-    <ion-navbar>
-        <ion-title>Home</ion-title>
-    </ion-navbar>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
 </ion-header>
 <script src="cordova.js"></script>
 
 <ion-content padding>
-    <h2>Welcome to Ionic!</h2>
-    <p>
-        This starter project comes with simple tabs-based layout for apps
-        that are going to primarily use a Tabbed UI.
-    </p>
-    <p>
-        Take a look at the <code>src/pages/</code> directory to add or change tabs,
-        update any existing page or create new pages.
-    </p>
+  <h2>Welcome to BetBot!</h2>
+  <p>
+    Select a Sport and date.
+  </p>
 
-    <ion-datetime pickerFormat="YYYY-MM-DD"
-     
-                  [pickerOptions]="customOptions" 
-                  [(ngModel)]="placeholderDate" placeholder="Select Date">
+  <ion-datetime pickerFormat="DD-MM-YYYY" 
+                min="{{minDate}}"
+                [max]="maxDate"
+                [pickerOptions]="customDateOptions" 
+                [(ngModel)]="placeholderDate" 
+                (ngModelChange)="dateChanged()" 
+                placeholder="Date">
 
-    </ion-datetime>
-    <button ion-button (click)="clearDate()">Clear date</button>
-    <button ion-button (click)="clickMe()">Click me</button>
+  </ion-datetime>
+  <!--    <button ion-button (click)="clearDate()">Clear date</button>
+    <button ion-button (click)="clickMe()">Click me</button>-->
 
-   <ion-item>
-        <!--<ion-label>Sport</ion-label>-->
-        <ion-multi-picker item-content [multiPickerColumns]="simpleColumns"
-                          placeholder="Select sport"></ion-multi-picker>
-    </ion-item>
-    
-    
-    <button ion-button (click)='openFilters()'>Default</button>
-    <button ion-button (click)="showProfilePage()">Go To About</button>
-    <button ion-button (click)="showWhatsPage()">Go To Whats</button>
-    <!--<ion-content padding>-->
+  <ion-item>
+    <!--<ion-label>Sport</ion-label>-->
+    <ion-multi-picker item-content 
+                      [multiPickerColumns]="whatList" 
+                      placeholder="Sport" 
+                      [(ngModel)]="placeholderWhat" 
+                      (ngModelChange)="whatChanged()">
+    </ion-multi-picker>
+  </ion-item>
 
-    <button ion-button full (click)="openPicker()">Open Simple Picker</button>
-    <button ion-button full (click)="openRemotePicker()">Open Remote JSON Picker</button>
+  <ion-item>
+    <ion-multi-picker item-content 
+                      [multiPickerColumns]="gamesList" 
+                      placeholder="Game" 
+                      [(ngModel)]="placeholderGame" 
+                      (ngModelChange)="gameChanged()">
+    </ion-multi-picker>
+  </ion-item>
+
+
+  <!--    <button ion-button (click)='openFilters()'>Default</button>
+    <button ion-button (click)="showProfilePage()">Go To About</button>-->
+  <button ion-button [disabled]="!isenabled" (click)="createBet()">Create bet</button>
+  <!--<ion-content padding>-->
+  <button ion-button >{{zbutton}}</button>
+
+  <!--    <button ion-button full (click)="openPicker()">Open Simple Picker</button>
+    <button ion-button full (click)="openRemotePicker()">Open Remote JSON Picker</button>-->
 
 </ion-content>
