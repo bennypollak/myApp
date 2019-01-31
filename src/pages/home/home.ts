@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { WheelSelector } from '@ionic-native/wheel-selector';
 import { HttpClient } from '@angular/common/http';
-import { ToastController } from 'ionic-angular/components/toast/toast-controller';
+import { ToastController } 
+from 'ionic-angular/components/toast/toast-controller';
 import { NavController } from 'ionic-angular';
 
 import { NewpagePage} from '../newpage/newpage';
@@ -47,10 +48,10 @@ export class HomePage {
         this.check()
     }
 
-    games = { "mlb": [{text:'soxs yanks', value:1}, 
-            {text:'mets nats', value:2}]
-            , "nba": [{text:'nicks nets', value:1}, 
-            {text:'cavs nats', value:2}]}
+    games = { "mlb": [{title:'soxs yanks', value:1}, 
+            {title:'mets nats', value:2}]
+            , "nba": [{title:'nicks nets', value:1}, 
+            {title:'cavs nats', value:2}]}
 
 
     constructor(public navCtrl: NavController, 
@@ -121,6 +122,12 @@ export class HomePage {
 
     createBet() {
         this.navCtrl.push(WhatsPage);
+    }
+
+    createList() {
+        var what = 'mlb' // this.placeholderWhat
+        this.navCtrl.push(WhatsPage, {title: "Matches",
+            events: this.games[what]});
     }
 
 }

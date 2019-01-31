@@ -7,18 +7,35 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>whats</ion-title>
+    <ion-title>{{title}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
-<ion-list>
-    <ion-item>I</ion-item>
-    <ion-item>am</ion-item>
-    <ion-item>a</ion-item>
-    <ion-item>list</ion-item>
-</ion-list>
+    <h2>{{title}}</h2>
 
+    
+    <ion-list>
+
+        <ion-item-sliding *ngFor="let event of events">
+            <ion-item (click)="bet(event)">
+                {{event.title}}
+            </ion-item>
+            <ion-item-options>
+<!--                
+                <button ion-button icon-only (click)="bet(event)" light>
+                    <ion-icon name="add"></ion-icon>
+                {{event.title}}</button>
+                <button ion-button (click)="createList()">Create list</button>-->
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+    
+    <ion-list>
+
+<!--        <button *ngFor="let event of events" (click)="bet(event)">
+                {{event.title}}
+            </button>-->
+    </ion-list>
 </ion-content>
