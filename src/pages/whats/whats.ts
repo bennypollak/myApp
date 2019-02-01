@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ToastController } from 'ionic-angular';
+import { HttpClient } from '@angular/common/http';
 
 /**
  * Generated class for the WhatsPage page.
@@ -14,22 +16,50 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  */
 @IonicPage()
 @Component({
-  selector: 'page-whats',
-  templateUrl: 'whats.html',
+    selector: 'page-whats',
+    templateUrl: 'whats.html',
 })
 export class WhatsPage {
     title: any = "hi"
     events: any
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.title = navParams.get('title');
-    this.events = navParams.get('events');
-  }
+    toast: ToastController
+    constructor(public navCtrl: NavController, public navParams: NavParams,
+        public toastController: ToastController, private http: HttpClient) {
+        this.title = navParams.get('title');
+        this.events = navParams.get('events');
+        this.presentToastWithOptions()
+    }
+    async presentToastWithOptions() {
+        this.toast = await this.toastController.create({
+            message: 'Loading...',
+            showCloseButton: false,
+            animated: true,
+            position: 'middle',
+            duration: 5000,
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad WhatsPage');
-  }
-bet(event) {
-       console.log('bet: '+event.value);
- 
-}
+            closeButtonText: 'Done'
+        });
+        this.toast.present();
+        this.loadEvents() 
+    }
+
+    ionViewDidLoad() {
+        console.log('ionViewDidLoad WhatsPage');
+    }
+    loadEvents() {
+        this.http.get('https://randomuser.me/api/?results=50')
+            .subscribe(res => {
+                let results = res['results']
+                let msg = `Selected ${results[0].email}`
+                console.log(msg)
+                this.events = results
+                this.toast.dismiss()
+
+        });
+          
+    }
+    bet(event) {
+        console.log('bet: ' + event.name.first);
+
+    }
 }
