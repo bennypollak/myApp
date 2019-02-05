@@ -11,7 +11,8 @@
     Select a Sport and date.
   </p>
 
-  <ion-datetime pickerFormat="DD-MM-YYYY" 
+   <ion-item>
+ <ion-datetime pickerFormat="DD-MM-YYYY" 
                 min="{{minDate}}"
                 [max]="maxDate"
                 [pickerOptions]="customDateOptions" 
@@ -20,10 +21,11 @@
                 placeholder="Date">
 
   </ion-datetime>
-  <!--    <button ion-button (click)="clearDate()">Clear date</button>
+   </ion-item>
+  <ion-item>
+ <!--    <button ion-button (click)="clearDate()">Clear date</button>
     <button ion-button (click)="clickMe()">Click me</button>-->
 
-  <ion-item>
     <!--<ion-label>Sport</ion-label>-->
     <ion-multi-picker item-content 
                       [multiPickerColumns]="whatList" 
@@ -47,6 +49,8 @@
     <button ion-button (click)="showProfilePage()">Go To About</button>-->
   <button ion-button [disabled]="!isenabled" (click)="createBet()">Create bet</button>
   <button ion-button (click)="createList()">Create list</button>
+  <p><button ion-button (click)="presentAlertConfirm()">Alert</button>
+  <button ion-button (click)="presentActionSheet()">Action</button>
   <!--<ion-content padding>-->
 
   <!--    <button ion-button full (click)="openPicker()">Open Simple Picker</button>

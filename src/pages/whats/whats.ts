@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+//import { ToastController } from 'ionic-angular';
+//import { ToastController, Toast } from '@ionic/angular';
+//import { ToastController, Toast } from 'ionic-angular';
+//import { ToastController } from 'ionic-angular';
+import { Toast }           from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
+
 import { HttpClient } from '@angular/common/http';
 
 /**
@@ -22,7 +28,7 @@ import { HttpClient } from '@angular/common/http';
 export class WhatsPage {
     title: any = "hi"
     events: any
-    toast: ToastController
+    toast: Toast
     constructor(public navCtrl: NavController, public navParams: NavParams,
         public toastController: ToastController, private http: HttpClient) {
         this.title = navParams.get('title');
@@ -33,7 +39,6 @@ export class WhatsPage {
         this.toast = await this.toastController.create({
             message: 'Loading...',
             showCloseButton: false,
-            animated: true,
             position: 'middle',
             duration: 5000,
 

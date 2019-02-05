@@ -18,3 +18,7 @@ https://ionicacademy.com/wheel-picker-ionic/
 
 https://www.joshmorony.com/an-introduction-to-lists-in-ionic-2/
 
+
+ionic cordova platform add android
+
+ionic cordova build android
